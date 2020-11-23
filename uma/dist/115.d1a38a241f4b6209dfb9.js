@@ -1,0 +1,1 @@
+(self.webpackChunk_mindtickle_uma=self.webpackChunk_mindtickle_uma||[]).push([[115],{115:(e,n,t)=>{"use strict";t.r(n),t.d(n,{default:()=>c});const c=function(){return React.createElement("div",null,"Coaching")}}}]);

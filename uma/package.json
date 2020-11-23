@@ -1,0 +1,26 @@
+{
+  "name": "@mindtickle/uma",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.12.3",
+    "@babel/preset-react": "7.12.1",
+    "babel-loader": "8.1.0",
+    "html-webpack-plugin": "4.5.0",
+    "serve": "11.3.2",
+    "webpack": "5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
+    "local-web-server": "^4.2.1"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve2": "serve dist -p 9000",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
