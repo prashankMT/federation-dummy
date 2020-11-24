@@ -1,11 +1,22 @@
 import React, { useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { sentry } from 'shell/Integrations';
+import { withTranslations } from 'shell/hocs';
 
-function CoachingApp() {
-  return <div>Coaching</div>
+import { ChangeLanguage } from './Testing'
+
+function App() {
+  return <div>
+    <h4>
+      {/* <FormattedMessage id='title' defaultMessage='Default Coching Title' /> */}
+      Coaching
+    </h4>
+  </div>
 }
 
-function Expose() {
+const CoachingApp = withTranslations(App);
+
+function Expose(props) {
   const { setRelease, setScope } = sentry.useSentryHelpers();
 
   useEffect(async () => {
@@ -14,10 +25,14 @@ function Expose() {
     };
     setScope({
       tags: applicationTags
-    })
+    });
     setRelease('coaching-1.0.0');
   }, []);
-  return <CoachingApp />
+
+  return <>
+    <ChangeLanguage changeLanguage={props.changeLanguage} />
+    <CoachingApp {...props} />
+  </>
 }
 
 

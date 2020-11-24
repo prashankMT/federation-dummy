@@ -57,6 +57,10 @@ module.exports = {
             singleton: true,
             requiredVersion: deps.react,
           },
+          "react-intl": {
+            singleton: true,
+            requiredVersion: deps["react-intl"],
+          },
           "react-dom": {
             singleton: true,
             requiredVersion: deps["react-dom"],
