@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { sentry } from 'shell/Integrations';
-import { withTranslations } from 'shell/hocs';
+import { FormattedMessage } from 'shell/Intl';
 
 import { ChangeLanguage } from './Testing'
 
-function App() {
+function CoachingApp() {
   return <div>
     <h4>
-      {/* <FormattedMessage id='title' defaultMessage='Default Coching Title' /> */}
-      Coaching
+      <FormattedMessage id='title' defaultMessage='Default Coching Title' />
     </h4>
   </div>
 }
-
-const CoachingApp = withTranslations(App);
 
 function Expose(props) {
   const { setRelease, setScope } = sentry.useSentryHelpers();
