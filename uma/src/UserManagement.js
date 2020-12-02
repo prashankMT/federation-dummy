@@ -1,24 +1,31 @@
-import React, { useEffect } from 'react';
-import { sentry } from 'shell/Integrations';
+import React, { useEffect } from "react";
+import { sentry } from "shell/Integrations";
+import { TriggerError } from "./Testing";
 
 function UserManagementApp() {
-  return <div>User Management</div>
+  return <div>User Management</div>;
 }
 
 function Expose() {
   const { setRelease, setScope } = sentry.useSentryHelpers();
   useEffect(async () => {
     const applicationTags = {
-      'feature.name': 'user-automation'
+      "feature.name": "user-automation",
+      commithash: COMMITHASH
     };
 
-    setRelease('user-management-1.0.0');
+    setRelease(SENTRY_RELEASE);
     setScope({
       tags: applicationTags
-    })
+    });
   }, []);
 
-  return <UserManagementApp />;
+  return (
+    <>
+      <UserManagementApp />
+      <TriggerError />
+    </>
+  );
 }
 
-export default Expose
+export default Expose;
