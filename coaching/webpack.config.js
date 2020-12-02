@@ -8,11 +8,14 @@ module.exports = {
   entry: "./src/index",
   mode: "development",
   output: {
-    publicPath: "auto",
+    publicPath: "https://localhost:8000/",
     chunkFilename: "[id].[contenthash].js",
   },
   resolve: {
-    extensions: [".js", ".mjs", ".jsx", ".css"]
+    extensions: [".js", ".mjs", ".jsx", ".css"],
+    alias: {
+      "process": "process-browserify",
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -35,6 +38,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           presets: ["@babel/preset-react"],
+          plugins: ["relay"]
         },
       },
     ],
@@ -60,6 +64,13 @@ module.exports = {
           "react-dom": {
             singleton: true,
             requiredVersion: deps["react-dom"],
+          },
+          "react-intl": {
+            singleton: true,
+            requiredVersion: deps["react-intl"],
+          },
+          '@mindtickle/relay-core': {
+            singleton: true,
           },
         },
       ],

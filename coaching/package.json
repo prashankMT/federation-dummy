@@ -7,6 +7,7 @@
     "@babel/preset-react": "7.12.1",
     "@webpack-cli/serve": "^1.1.0",
     "babel-loader": "8.1.0",
+    "babel-plugin-relay": "^10.1.0",
     "html-webpack-plugin": "4.5.0",
     "local-web-server": "^4.2.1",
     "serve": "11.3.2",
@@ -18,11 +19,17 @@
     "start": "webpack serve",
     "build": "webpack --mode production",
     "serve2": "serve dist -p 8000",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "relay": "relay-compiler --schema ./schema.graphql --src ./src"
   },
   "dependencies": {
+    "graphql": "^15.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-intl": "^5.10.4"
+    "react-intl": "^5.10.4",
+    "react-relay": "^10.1.0",
+    "relay-compiler": "^10.1.0",
+    "relay-compiler-language-typescript": "^13.0.2",
+    "relay-runtime": "^10.1.0"
   }
 }
