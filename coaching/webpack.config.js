@@ -57,6 +57,18 @@ module.exports = {
       shared: [
         {
           ...deps,
+          'react-relay': {
+            singleton: true,
+            requiredVersion: deps['react-relay'],
+          },
+          'relay-runtime': {
+            singleton: true,
+            requiredVersion: deps['relay-runtime'],
+          },
+          'react-relay-network-modern': {
+            singleton: true,
+            requiredVersion: deps['react-relay-network-modern'],
+          },
           react: {
             singleton: true,
             requiredVersion: deps.react,
@@ -68,9 +80,6 @@ module.exports = {
           "react-intl": {
             singleton: true,
             requiredVersion: deps["react-intl"],
-          },
-          '@mindtickle/relay-core': {
-            singleton: true,
           },
         },
       ],

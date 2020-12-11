@@ -7,7 +7,7 @@ const TestingApplication = () => {
 function App() {
   return (
     <React.Suspense fallback={<LoadingShell />}>
-      <Shell TestingApplication={TestingApplication} testingRoute={"coaching"} />
+      <Shell />
     </React.Suspense>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import { graphql } from "relay-runtime";
 
-import { QueryRenderer } from "@mindtickle/relay-core";
+import { QueryRenderer, graphql } from 'react-relay';
+import { useRelayEnvironment } from 'react-relay/hooks';
+import { useAllRelayEnvironments, withQueryRenderer } from 'shell/Relay'
 
 import Header from "./components/Header";
 import Country from "./components/Country";
@@ -22,11 +23,16 @@ function Wrapper({ props }) {
   }
 }
 
+const wrapped = withQueryRenderer()(Wrapper);
+
 export default function Home() {
+  const environment = useRelayEnvironment()
+  console.log(environment)
   return (
     <div>
       <Header />
       <QueryRenderer
+        environment={environment}
         query={graphql`
           query HomeCountriesListQuery {
             countries {
@@ -35,7 +41,7 @@ export default function Home() {
             }
           }
         `}
-        Component={Wrapper}
+        render={wrapped}
         variables={{}}
       />
     </div>
