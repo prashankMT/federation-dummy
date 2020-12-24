@@ -21,8 +21,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 9000,
-    historyApiFallback: true
-    // https: true,
+    historyApiFallback: true,
+    https: true
   },
   module: {
     rules: [
@@ -75,13 +75,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html"
     }),
-    new SentryCliPlugin({
-      include: ".",
-      ignore: ["node_modules", "webpack.config.js"],
-      configFile: "sentry.properties",
-      release: Env.SENTRY_RELEASE,
-      ignoreFile: ".sentrycliignore"
-    }),
+    // new SentryCliPlugin({
+    //   include: ".",
+    //   ignore: ["node_modules", "webpack.config.js"],
+    //   configFile: "sentry.properties",
+    //   release: Env.SENTRY_RELEASE,
+    //   ignoreFile: ".sentrycliignore"
+    // }),
     ...globalPlugin
   ]
 };

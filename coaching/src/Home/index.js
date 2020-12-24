@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { QueryRenderer, graphql } from 'react-relay';
-import { useRelayEnvironment } from 'react-relay/hooks';
-import { useAllRelayEnvironments, withQueryRenderer } from 'shell/Relay'
+import { QueryRenderer, graphql } from "react-relay";
+import { useRelayEnvironment } from "react-relay/hooks";
+import { useAllRelayEnvironments, withQueryRenderer } from "shell/Relay";
 
 import Header from "./components/Header";
 import Country from "./components/Country";
 
 function Wrapper({ props }) {
   if (props) {
+    window.MTRealtimeUserMonitoring &&
+      window.MTRealtimeUserMonitoring.appRenderComplete({
+        dummyField: "hello eve from coaching"
+      });
     return (
       <ul>
         {props.countries.map((country) => (
@@ -26,8 +30,8 @@ function Wrapper({ props }) {
 const wrapped = withQueryRenderer()(Wrapper);
 
 export default function Home() {
-  const environment = useRelayEnvironment()
-  console.log(environment)
+  const environment = useRelayEnvironment();
+  console.log(environment);
   return (
     <div>
       <Header />

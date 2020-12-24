@@ -1,24 +1,58 @@
-import React, { useEffect } from 'react';
-import { sentry } from 'shell/Integrations';
+import React, { useEffect } from "react";
+import { Route, Link, Routes } from "react-router-dom";
 
-function ProfileManagementApp() {
-	return <div>Profile Management</div>
-}
+import { sentry } from "shell/Integrations";
+
+import { Details, About, Basics } from "./Pages";
+
+const ProfileManagementApp = () => {
+  useEffect(() => {
+    window.MTRealtimeUserMonitoring &&
+      window.MTRealtimeUserMonitoring.appRenderComplete({
+        dummyField: "hello eve from Profile"
+      });
+  }, []);
+  return (
+    <>
+      <nav>
+        <li>
+          <Link to="./details">Details</Link>
+        </li>
+      </nav>
+      <h2>Home</h2>
+      <div>Profile Management Home</div>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="details" element={<Details />}>
+          <Route path="about" element={<About />} />
+          <Route path="basics" element={<Basics />} />
+        </Route>
+        <Route path="" element={<ProfileManagementApp />} />
+      </Routes>
+    </>
+  );
+};
 
 function Expose() {
-	const { setRelease, setScope } = sentry.useSentryHelpers();
+  const { setRelease, setScope } = sentry.useSentryHelpers();
 
-	useEffect(async () => {
-		const applicationTags = {
-			'feature.name': 'profile-automation'
-		};
-		setScope({
-			tags: applicationTags
-		})
-		setRelease('profile-management-1.0.0');
-	}, []);
+  useEffect(async () => {
+    const applicationTags = {
+      "feature.name": "profile-automation"
+    };
+    setScope({
+      tags: applicationTags
+    });
+    setRelease("profile-management-1.0.0");
+  }, []);
 
-	return <ProfileManagementApp />;
+  return <App />;
 }
 
-export default Expose
+export default Expose;

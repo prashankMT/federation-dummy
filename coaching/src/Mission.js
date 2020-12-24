@@ -1,29 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { sentry } from 'shell/Integrations';
-import { useUserAuth } from 'shell/Auth';
+import { sentry } from "shell/Integrations";
+import { useUserAuth } from "shell/Auth";
 
 function MissionApp() {
-  return <div>Mission</div>
+  useEffect(() => {
+    window.MTRealtimeUserMonitoring &&
+      window.MTRealtimeUserMonitoring.appRenderComplete({
+        dummyField: "hello eve from MIssoin"
+      });
+  }, []);
+  return <div>Mission</div>;
 }
 
 function Expose() {
   const { setRelease, setScope } = sentry.useSentryHelpers();
   const userAuth = useUserAuth();
-  console.log(userAuth)
+  console.log(userAuth);
   useEffect(() => {
     const applicationTags = {
-      'feature.name': 'mission-automation'
+      "feature.name": "mission-automation"
     };
     setScope({
       tags: applicationTags
-    })
-    setRelease('mission-1.0.0');
-  }, [])
+    });
+    setRelease("mission-1.0.0");
+  }, []);
 
-  return (
-    <MissionApp />
-  )
+  return <MissionApp />;
 }
 
-export default Expose
+export default Expose;
