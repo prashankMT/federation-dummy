@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { sentry } from "shell/Integrations";
+import { sentry, PerformanceTracking } from "shell/Integrations";
 import { TriggerError } from "./Testing";
 
 function UserManagementApp() {
   useEffect(() => {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from UM"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("Profile: Performance data ->", data);
   }, []);
   return (
     <>

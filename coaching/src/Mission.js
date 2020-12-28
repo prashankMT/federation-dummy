@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 
-import { sentry } from "shell/Integrations";
+import { sentry, PerformanceTracking } from "shell/Integrations";
 import { useUserAuth } from "shell/Auth";
 
 function MissionApp() {
   useEffect(() => {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from MIssoin"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("Mission: Performance data ->", data);
   }, []);
   return <div>Mission</div>;
 }

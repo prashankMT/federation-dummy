@@ -3,16 +3,16 @@ import React, { useEffect } from "react";
 import { QueryRenderer, graphql } from "react-relay";
 import { useRelayEnvironment } from "react-relay/hooks";
 import { useAllRelayEnvironments, withQueryRenderer } from "shell/Relay";
+import { PerformanceTracking } from "shell/Integrations";
 
 import Header from "./components/Header";
 import Country from "./components/Country";
 
 function Wrapper({ props }) {
   if (props) {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from coaching"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("Coaching: Performance data ->", data);
+
     return (
       <ul>
         {props.countries.map((country) => (

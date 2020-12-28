@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { PerformanceTracking } from "shell/Integrations";
 
 const About = () => {
   useEffect(() => {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from About"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("About: Performance data ->", data);
   }, []);
   return (
     <>
@@ -21,10 +20,8 @@ const About = () => {
 
 const Basics = () => {
   useEffect(() => {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from Basics"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("Basics: Performance data ->", data);
   }, []);
   return (
     <>

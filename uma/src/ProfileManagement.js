@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import { Route, Link, Routes } from "react-router-dom";
 
-import { sentry } from "shell/Integrations";
+import { sentry, PerformanceTracking } from "shell/Integrations";
 
 import { Details, About, Basics } from "./Pages";
 
 const ProfileManagementApp = () => {
   useEffect(() => {
-    window.MTRealtimeUserMonitoring &&
-      window.MTRealtimeUserMonitoring.appRenderComplete({
-        dummyField: "hello eve from Profile"
-      });
+    const data = PerformanceTracking.usePerformanceData();
+    console.log("Profile: Performance data ->", data);
   }, []);
   return (
     <>
