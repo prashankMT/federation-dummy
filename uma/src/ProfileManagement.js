@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Route, Link, Routes } from "react-router-dom";
 
-import { sentry, PerformanceTracking } from "shell/Integrations";
+import { sentry, performanceMetrics } from "shell/Integrations";
 
 import { Details, About, Basics } from "./Pages";
 
 const ProfileManagementApp = () => {
   useEffect(() => {
-    const data = PerformanceTracking.usePerformanceData();
+    const data = performanceMetrics.usePerformanceData();
     console.log("Profile: Performance data ->", data);
   }, []);
   return (

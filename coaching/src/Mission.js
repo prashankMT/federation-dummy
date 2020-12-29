@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 
-import { sentry, PerformanceTracking } from "shell/Integrations";
+import { sentry, performanceMetrics } from "shell/Integrations";
 import { useUserAuth } from "shell/Auth";
 
 function MissionApp() {
   useEffect(() => {
-    const data = PerformanceTracking.usePerformanceData();
+    const data = performanceMetrics.usePerformanceData();
     console.log("Mission: Performance data ->", data);
   }, []);
   return <div>Mission</div>;

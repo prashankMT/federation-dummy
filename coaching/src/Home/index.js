@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import { QueryRenderer, graphql } from "react-relay";
 import { useRelayEnvironment } from "react-relay/hooks";
 import { useAllRelayEnvironments, withQueryRenderer } from "shell/Relay";
-import { PerformanceTracking } from "shell/Integrations";
+import { performanceMetrics } from "shell/Integrations";
 
 import Header from "./components/Header";
 import Country from "./components/Country";
 
 function Wrapper({ props }) {
   if (props) {
-    const data = PerformanceTracking.usePerformanceData();
+    const data = performanceMetrics.usePerformanceData();
     console.log("Coaching: Performance data ->", data);
 
     return (

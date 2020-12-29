@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { sentry, PerformanceTracking } from "shell/Integrations";
+import { sentry, performanceMetrics } from "shell/Integrations";
 import { TriggerError } from "./Testing";
 
 function UserManagementApp() {
   useEffect(() => {
-    const data = PerformanceTracking.usePerformanceData();
-    console.log("Profile: Performance data ->", data);
+    const data = performanceMetrics.usePerformanceData();
+    console.log("UM: Performance data ->", data);
   }, []);
   return (
     <>

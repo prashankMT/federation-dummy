@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { PerformanceTracking } from "shell/Integrations";
+import { performanceMetrics } from "shell/Integrations";
 
 const About = () => {
   useEffect(() => {
-    const data = PerformanceTracking.usePerformanceData();
+    const data = performanceMetrics.usePerformanceData();
     console.log("About: Performance data ->", data);
   }, []);
   return (
@@ -20,7 +20,7 @@ const About = () => {
 
 const Basics = () => {
   useEffect(() => {
-    const data = PerformanceTracking.usePerformanceData();
+    const data = performanceMetrics.usePerformanceData();
     console.log("Basics: Performance data ->", data);
   }, []);
   return (
