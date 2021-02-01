@@ -75,13 +75,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html"
     }),
-    // new SentryCliPlugin({
-    //   include: ".",
-    //   ignore: ["node_modules", "webpack.config.js"],
-    //   configFile: "sentry.properties",
-    //   release: Env.SENTRY_RELEASE,
-    //   ignoreFile: ".sentrycliignore"
-    // }),
+    new SentryCliPlugin({
+      include: ".",
+      ignore: ["node_modules", "webpack.config.js"],
+      // configFile: "sentry.properties",
+      release: Env.SENTRY_RELEASE
+      // ignoreFile: ".sentrycliignore"
+    }),
     ...globalPlugin
   ]
 };
